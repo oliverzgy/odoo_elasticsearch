@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_index_management_wizard_form">
+            <field name="name">view.index.management.wizard.form</field>
+            <field name="model">index.management.wizard</field>
+            <field name="arch" type="xml">
+                <form string="索引管理">
+                    <field name="index_ids">
+                        <tree string="Index List" create="0" edit="0" delete="0">
+                            <field name="name" readonly="1"/>
+                            <field name="model_id" readonly="1"/>
+                            <field name="index_exists" readonly="1"/>
+                            <field name="fields_include" readonly="1" invisible="1"/>
+                        </tree>
+                    </field>
+                    <group>
+                        <field name="option" placeholder="选择处理动作"/>
+                    </group>
+                    <footer>
+                        <button name="action_confirm" type="object" string="确定" class="oe_highlight"/>
+                        <button special="cancel" string="取消"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="launch_index_management_wizard"
+            name="批量管理"
+            src_model="search.engine.index"
+            res_model="index.management.wizard"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"/>
+    </data>
+</odoo>

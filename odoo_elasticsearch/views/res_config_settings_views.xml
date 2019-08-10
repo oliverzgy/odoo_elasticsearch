@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="80"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="odoo_elasticsearch" string="Elasticsearch" data-key="odoo_elasticsearch" groups="">
+                    <h2>ES Server</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-9 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="elasticsearch_http" class="col-md-3 o_light_label"/>
+                                        <field name="elasticsearch_http"/>
+                                    </div>
+                                    <div class="row mt16">
+                                        <label for="elasticsearch_url" class="col-md-3 o_light_label"/>
+                                        <field name="elasticsearch_url"/>
+                                    </div>
+                                    <div class="row">
+                                        <label for="elasticsearch_user" class="col-md-3 o_light_label"/>
+                                        <field name="elasticsearch_user"/>
+                                    </div>
+                                    <div class="row">
+                                        <label for="elasticsearch_pass" class="col-md-3 o_light_label"/>
+                                        <field name="elasticsearch_pass" password="True"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="elasticsearch_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="res_config_settings_view_form"/>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'odoo_elasticsearch'}</field>
+    </record>
+
+    <menuitem id="elasticsearch_menu_setting"
+        name="Settings"
+        parent="menu_elasticsearch_configuration"
+        sequence="0"
+        action="elasticsearch_settings_action"
+        groups="base.group_system"/>
+</odoo>

@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <record id="view_es_index_tree" model="ir.ui.view">
+            <field name="name">view.es.index.tree</field>
+            <field name="model">es.index</field>
+            <field name="arch" type="xml">
+                <tree string="Search Engine Index">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="index_exists"/>
+                    <field name="fields_include"/>
+                    <button name="action_create_index" type="object" string="Create Index" class="btn btn-primary"/>
+                    <button name="action_bulk_document" type="object" string="Bulk Dcouments" class="btn btn-primary"/>
+                    <button name="action_create_document" type="object" string="Add Dcouments" class="btn btn-primary"/>
+                    <button name="action_update_document" type="object" string="Update Documents" class="btn btn-primary"/>
+                    <button name="action_refresh_index" type="object" string="Refesh Index" class="btn"/>
+                    <button name="action_get_index" type="object" string="Get Index" class="btn"/>
+                    <button name="action_put_mapping" type="object" string="Put Mapping" class="btn"/>
+                    <button name="action_check_index" type="object" string="Check Index" class="btn"/>
+                    <button name="action_delete_index" type="object" string="Delete Index" class="btn"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_es_index_form" model="ir.ui.view">
+            <field name="name">view.es.index.form</field>
+            <field name="model">es.index</field>
+            <field name="arch" type="xml">
+                <form string="Search Engine Index">
+                    <header>
+                        <button name="action_create_index" type="object" string="Create Index" class="btn btn-primary"/>
+                        <button name="action_bulk_document" type="object" string="Bulk Dcouments" class="btn btn-primary"/>
+                        <button name="action_create_document" type="object" string="Add Documents" class="btn btn-primary"/>
+                        <button name="action_update_document" type="object" string="Update Documents" class="btn btn-primary"/>
+                        <button name="action_refresh_index" type="object" string="Refresh Index" class="btn"/>
+                        <button name="action_get_index" type="object" string="Get Index" class="btn"/>
+                        <button name="action_put_settings" type="object" string="Put Setting" class="btn"/>
+                        <button name="action_put_mapping" type="object" string="Put Mapping" class="btn"/>
+                        <button name="action_check_index" type="object" string="Check Index" class="btn"/>
+                        <button name="action_delete_index" type="object" string="Delete Index" class="btn"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="model_id"/>
+                        </group>
+                        <group>
+                            <field name="index_exists"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="fields_include" style="word-break:break-all" placeholder="[]"/>
+                        <field name="settings"/>
+                        <field name="mapping"/>
+                        <field name="index_info"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_es_index" model="ir.actions.act_window">
+            <field name="name">Index Managment</field>
+            <field name="res_model">es.index</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="es_index_menu" name="Index" action="action_es_index"
+                  parent="elasticsearch_root_menu"
+                  groups="base.group_system"/>
+
+    </data>
+</odoo>

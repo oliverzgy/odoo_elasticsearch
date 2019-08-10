@@ -1,0 +1,10 @@
+<odoo>
+  <data>
+    <menuitem name="Elasticsearch" id="elasticsearch_root_menu"
+                  groups=""
+                  web_icon="odoo_elasticsearch,static/description/icon.png"
+                  sequence="40"/>
+
+    <menuitem id="menu_elasticsearch_configuration" name="Configuration" parent="elasticsearch_root_menu" sequence="90" groups=""/>
+  </data>
+</odoo>
