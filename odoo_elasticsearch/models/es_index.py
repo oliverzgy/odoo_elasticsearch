@@ -53,7 +53,7 @@ class EsIndex(models.Model):
         data = []
         for rec in self:
             for r in records:
-                val1 = {"update": {"_id": r['id'], "_index": r.name, '_type': '_doc'}}
+                val1 = {"update": {"_id": r['id'], "_index": rec.name, '_type': '_doc'}}
                 val2 = {"doc": r, "doc_as_upsert": True}
                 data.append(val1)
                 data.append(val2)
